@@ -2,7 +2,7 @@ import requests
 import os
 import time
 
-def download_csv(url,save_path):
+def download_file(url,save_path):
   response=requests.get(url)
   response.raise_for_status()
 

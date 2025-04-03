@@ -1,0 +1,43 @@
+# config
+name: Download CSV
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '13 13 1-5 * *' #'*/5 * * * *'
+  push:
+    branches:
+      - main
+
+jobs:
+  download_csv:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.13.2'
+
+      - name: Install dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install requests
+
+      - name: Run download script
+        run: |
+          source venv/bin/activate
+          python download_csv.py
+      
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add data/*.csv
+          git commit -m 'Automated CSV download'
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

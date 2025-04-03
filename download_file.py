@@ -15,10 +15,9 @@ def download_file(url,save_path):
 if __name__=="__main__":
   file_url="https://sbi.co.in/documents/16012/1400784/FOREX_CARD_RATES.pdf"
 
-save_dir='data'
-#time.strftime("%Y") + '/' + time.strftime("%m") + '/' + time.strftime("%d")
+save_dir=time.strftime("%Y") + '/' + time.strftime("%m") 
 os.makedirs(save_dir,exist_ok=True)
-timestr = time.strftime("%Y%m%d-%H%M%S")
+timestr = time.strftime("%Y_%m_%d-%H:%M")
 save_path=os.path.join(save_dir, "FOREX_CARD_RATES_" + timestr + ".pdf")
 
 download_file(file_url,save_path)

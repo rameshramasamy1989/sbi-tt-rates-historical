@@ -12,7 +12,7 @@ def download_csv(url,save_path):
 if __name__=="__main__":
   file_url="https://sbi.co.in/documents/16012/1400784/FOREX_CARD_RATES.pdf"
 
-save_dir=time.strftime("%Y")/time.strftime("%m")/time.strftime("%d")
+save_dir=time.strftime("%Y") + '/' + time.strftime("%m") + '/' + time.strftime("%d")
 os.makedirs(save_dir,exist_ok=True)
 timestr = time.strftime("%Y%m%d-%H%M%S")
 save_path=os.path.join(save_dir,"data" + timestr + ".pdf")

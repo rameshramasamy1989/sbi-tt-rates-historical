@@ -15,7 +15,7 @@ if __name__=="__main__":
 save_dir=time.strftime("%Y") + '/' + time.strftime("%m") + '/' + time.strftime("%d")
 os.makedirs(save_dir,exist_ok=True)
 timestr = time.strftime("%Y%m%d-%H%M%S")
-save_path=os.path.join(save_dir,"data" + timestr + ".pdf")
+save_path=os.path.join(save_dir, "FOREX_CARD_RATES_" + timestr + ".pdf")
 
 download_file(file_url,save_path)
 print(f"Saved to {save_path}")
